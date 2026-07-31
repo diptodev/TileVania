@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 592288339782269466}
   - component: {fileID: 3287919198816735587}
   - component: {fileID: 2198205692974473870}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BrongoPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2180666721a14d14687f448cb9244617, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

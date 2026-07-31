@@ -17,7 +17,7 @@ TagManager:
   - Ground
   - Ladder
   - Player
-  - 
+  - Bouncing
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 253391757
+    locked: 0
+  - name: Bouncing
+    uniqueID: 3691962379
     locked: 0
   m_RenderingLayers:
   - Default
