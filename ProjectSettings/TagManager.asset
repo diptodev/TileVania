@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Platforms
+  - Background
+  - Water
+  - Ground
+  - Ladder
+  - Player
   - 
   - 
   - 
@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2151088387
+    locked: 0
+  - name: Water
+    uniqueID: 1802741849
+    locked: 0
+  - name: Ladder
+    uniqueID: 1106133571
+    locked: 0
+  - name: Platforms
+    uniqueID: 1991628663
+    locked: 0
+  - name: Player
+    uniqueID: 253391757
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []
