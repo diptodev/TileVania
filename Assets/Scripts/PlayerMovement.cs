@@ -11,11 +11,14 @@ public class PlayerMovement : MonoBehaviour
     float climbSpeed=5f;
     float startGravityScale;
     bool isAlive=true;
+
     Rigidbody2D playerRigidBody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
 Vector2 diedVector=new Vector2(10f,20f);
+[SerializeField] GameObject bullet;
+[SerializeField] Transform gunTransform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -88,11 +91,16 @@ Vector2 diedVector=new Vector2(10f,20f);
             }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer==LayerMask.NameToLayer("Enemy") && isAlive)
+        if (playerRigidBody.IsTouchingLayers(LayerMask.GetMask("Enemy","Hazards")) && isAlive)
         {
             playerRigidBody.linearVelocity=diedVector;
             myAnimator.SetTrigger("isDead");
             isAlive=false;           
         }
+    }
+    void OnAttack(InputValue inputValue)
+    {
+         if (!isAlive){return;}
+        Instantiate(bullet,gunTransform.position,gunTransform.rotation);
     }
 }
