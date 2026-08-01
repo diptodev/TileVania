@@ -23,8 +23,12 @@ public class Bullets : MonoBehaviour
        {
         Debug.Log("You just attact enemy");
          Destroy(collision.gameObject);
+
        } 
-      xSpeed=0f;
-       Destroy(gameObject,1f);
+      Destroy(gameObject );
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject,1f);
     } 
 }
