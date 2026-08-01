@@ -10,27 +10,33 @@ public class PlayerMovement : MonoBehaviour
     float jumpSpeed=20f;
     float climbSpeed=5f;
     float startGravityScale;
+    bool isAlive=true;
     Rigidbody2D playerRigidBody;
     Animator myAnimator;
-    CapsuleCollider2D capsuleCollider;
+    CapsuleCollider2D myBodyCollider;
+    BoxCollider2D myFeetCollider;
+Vector2 diedVector=new Vector2(10f,20f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRigidBody=GetComponent<Rigidbody2D>();
          myAnimator=GetComponent<Animator>();
-         capsuleCollider=GetComponent<CapsuleCollider2D>();
+         myBodyCollider=GetComponent<CapsuleCollider2D>();
+         myFeetCollider=GetComponent<BoxCollider2D>();
          startGravityScale=playerRigidBody.gravityScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Run();
-        flipSprite();
-        LadderClimbing();
+        if (!isAlive){return;}
+         Run();
+          flipSprite();
+         LadderClimbing();
     }
    void OnMove(InputValue value)
     {
+         if (!isAlive){return;}
         moveInput=value.Get<Vector2>();
         if (Math.Abs(moveInput.x)>0)
         {
@@ -42,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
     }
    void OnJump(InputValue value)
     {
-        if (!capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+         if (!isAlive){return;}
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -66,7 +73,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void LadderClimbing()
     {
-         if (!capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+          
+         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             playerRigidBody.gravityScale=startGravityScale;
             myAnimator.SetBool("isClimbing",false);
@@ -78,4 +86,13 @@ public class PlayerMovement : MonoBehaviour
          
             myAnimator.SetBool("isClimbing",true);
             }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer==LayerMask.NameToLayer("Enemy") && isAlive)
+        {
+            playerRigidBody.linearVelocity=diedVector;
+            myAnimator.SetTrigger("isDead");
+            isAlive=false;           
+        }
+    }
 }
