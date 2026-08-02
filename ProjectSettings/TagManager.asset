@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Platforms
   - Background
-  - Water
+  - 
   - Ground
   - Ladder
   - Player
@@ -24,7 +24,7 @@ TagManager:
   - Hazards
   - Bullets
   - Interactables
-  - 
+  - KillWater
   - 
   - 
   - 
@@ -46,14 +46,14 @@ TagManager:
   - name: Background
     uniqueID: 2151088387
     locked: 0
-  - name: Water
-    uniqueID: 1802741849
-    locked: 0
   - name: Ladder
     uniqueID: 1106133571
     locked: 0
   - name: Platforms
     uniqueID: 1991628663
+    locked: 0
+  - name: Water
+    uniqueID: 1802741849
     locked: 0
   - name: Bouncing
     uniqueID: 3691962379

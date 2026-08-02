@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     Vector2 moveInput;
@@ -91,12 +92,20 @@ Vector2 diedVector=new Vector2(10f,20f);
             }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerRigidBody.IsTouchingLayers(LayerMask.GetMask("Enemy","Hazards")) && isAlive)
+      
+       
+        if (playerRigidBody.IsTouchingLayers(LayerMask.GetMask( "Enemy","KillWater","Hazards")) && isAlive)
         {
-            playerRigidBody.linearVelocity=diedVector;
-            myAnimator.SetTrigger("isDead");
-            isAlive=false;           
+            
+          Die();          
         }
+    }
+    void Die()
+    {
+          playerRigidBody.linearVelocity=diedVector;
+          myAnimator.SetTrigger("isDead");
+          isAlive=false; 
+          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void OnAttack(InputValue inputValue)
     {
