@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,10 +24,15 @@ public class PortalExit : MonoBehaviour
                 scenePresistent.ResetScenePresist();
             }
             Debug.Log("After reset");
-            int currentIndex= SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentIndex);
-            Debug.Log("Scene loaded");
+            StartCoroutine(Load());
         }
+    }
+    IEnumerator Load()
+    {
+        yield return new WaitForEndOfFrame();
+        int currentIndex= SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentIndex+1);
+            Debug.Log("Scene loaded");
     }
     // void OnCollisionEnter2D(Collision2D collision)
     // {

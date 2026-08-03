@@ -117,16 +117,22 @@ Vector2 diedVector=new Vector2(10f,20f);
             Invoke("FadeoutPlayer",1f);
           }else
           {
-            RestartGame();
+            RestartGame(currentLive);
           }
  }
-    void RestartGame()
+    void RestartGame(int currentLive)
     {
-        // if (currentLive==0)
-        // {
-        //    FindFirstObjectByType<GameSession>().ResetGameSession() ;
-        //    FindFirstObjectByType<ScenePresistent>().ResetScenePresist() ; 
-        // }
+        if (currentLive==0)
+        {
+       FindAnyObjectByType<GameSession>().ResetGameSession() ;
+       FindAnyObjectByType<ScenePresistent>().ResetScenePresist(); 
+        }
+        
+    StartCoroutine(Reload());
+    }
+    IEnumerator Reload()
+    {
+        yield return new WaitForEndOfFrame();
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void OnAttack(InputValue inputValue)
@@ -162,7 +168,7 @@ Vector2 diedVector=new Vector2(10f,20f);
         yield return new WaitForSeconds(0.1f);
 
         } 
-        RestartGame();
+        RestartGame(0);
          
     }
 }
