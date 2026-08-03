@@ -17,7 +17,10 @@ public class EnemyGoober : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        flipPlayer();
+       if (collision.gameObject.CompareTag("Ground"))
+       {
+         flipPlayer();
+       }
     }
     // void OnCollisionEnter2D(Collision2D collision)
     // {

@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 public class PlayerMovement : MonoBehaviour
 {
     Vector2 moveInput;
@@ -12,14 +14,16 @@ public class PlayerMovement : MonoBehaviour
     float climbSpeed=5f;
     float startGravityScale;
     bool isAlive=true;
-
+float fadeDuration=1f;
     Rigidbody2D playerRigidBody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
+    SpriteRenderer spriteRenderer;
 Vector2 diedVector=new Vector2(10f,20f);
 [SerializeField] GameObject bullet;
 [SerializeField] Transform gunTransform;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +31,8 @@ Vector2 diedVector=new Vector2(10f,20f);
          myAnimator=GetComponent<Animator>();
          myBodyCollider=GetComponent<CapsuleCollider2D>();
          myFeetCollider=GetComponent<BoxCollider2D>();
+         spriteRenderer=GetComponent<SpriteRenderer>();
+        
          startGravityScale=playerRigidBody.gravityScale;
     }
 
@@ -105,11 +111,46 @@ Vector2 diedVector=new Vector2(10f,20f);
           playerRigidBody.linearVelocity=diedVector;
           myAnimator.SetTrigger("isDead");
           isAlive=false; 
-          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+           Invoke("FadeoutPlayer",1f);
+          
+          
+    }
+    void RestartGame()
+    {
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void OnAttack(InputValue inputValue)
     {
          if (!isAlive){return;}
         Instantiate(bullet,gunTransform.position,gunTransform.rotation);
+    }
+    void FadeoutPlayer()
+    {
+        StartCoroutine(Fadeout());
+    }
+    IEnumerator Fadeout()
+    {
+     
+        float time=0f;
+         bool visible=true;
+        while (time<fadeDuration)
+        {
+            // Color c=spriteRenderer.color;
+            // c.a=Mathf.Lerp(1f,0,time/fadeDuration);
+            // spriteRenderer.color=c;
+            // time+=0.1f;
+            // yield return new WaitForSeconds(0.05f);
+            // c.a=0f;
+            // spriteRenderer.color=c;
+            // yield return new WaitForSeconds(0.05f); 
+        float fadeAlpha=Mathf.Lerp(1f,0,time/fadeDuration);
+        Color c=spriteRenderer.color;
+        c.a=visible?fadeAlpha:0f;
+        visible=!visible;
+        spriteRenderer.color=c;
+        time+=0.1f;
+        yield return new WaitForSeconds(0.1f);
+        }
+        RestartGame();
     }
 }

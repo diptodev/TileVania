@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Interactables
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Platforms
   - Background
-  - 
+  - Door
   - Ground
   - Ladder
   - Player
@@ -66,6 +67,9 @@ TagManager:
     locked: 0
   - name: Interactables
     uniqueID: 2794046165
+    locked: 0
+  - name: Door
+    uniqueID: 1392399493
     locked: 0
   - name: Player
     uniqueID: 253391757

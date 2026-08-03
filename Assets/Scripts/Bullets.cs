@@ -21,14 +21,15 @@ public class Bullets : MonoBehaviour
     {
        if (collision.CompareTag("Enemy"))
        {
-        Debug.Log("You just attact enemy");
+         
          Destroy(collision.gameObject);
 
        } 
-      Destroy(gameObject );
+      Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject,1f);
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     } 
 }

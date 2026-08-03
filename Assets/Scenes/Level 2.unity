@@ -201,7 +201,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1991628663
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -5849,7 +5849,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: 3.18, z: -10}
+  m_LocalPosition: {x: -16.673265, y: 2.65677, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27037,7 +27037,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1106133571
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -27382,8 +27382,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6263ef39ee655b040a6c9189335d5cb2, type: 3}
---- !u!4 &1765769376 stripped
-Transform:
+--- !u!224 &1765769376 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
   m_PrefabInstance: {fileID: 4375993128608155071}
   m_PrefabAsset: {fileID: 0}
@@ -27715,7 +27715,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1802741849
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -28020,11 +28020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28045,6 +28045,14 @@ PrefabInstance:
     - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -21.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 4356949715293455394, guid: 430d3cbe08502e341bdc7595876dabc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28143,10 +28151,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6163534317237617146, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.09998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163534317237617146, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.33556
+      objectReference: {fileID: 0}
     - target: {fileID: 6460665222048793060, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
       propertyPath: BoundingShape2D
       value: 
       objectReference: {fileID: 664933303}
+    - target: {fileID: 6739900123686442241, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.09998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739900123686442241, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.33556
+      objectReference: {fileID: 0}
     - target: {fileID: 8263122858172787504, guid: 9779228ddff746e48adba765d0368bbc, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
