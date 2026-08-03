@@ -108,15 +108,25 @@ Vector2 diedVector=new Vector2(10f,20f);
     }
     void Die()
     {
+        int currentLive=  FindAnyObjectByType<GameSession>().TakeLife();
           playerRigidBody.linearVelocity=diedVector;
           myAnimator.SetTrigger("isDead");
           isAlive=false; 
-           Invoke("FadeoutPlayer",1f);
-          
-          
-    }
+          if (currentLive==0)
+          {
+            Invoke("FadeoutPlayer",1f);
+          }else
+          {
+            RestartGame();
+          }
+ }
     void RestartGame()
     {
+        // if (currentLive==0)
+        // {
+        //    FindFirstObjectByType<GameSession>().ResetGameSession() ;
+        //    FindFirstObjectByType<ScenePresistent>().ResetScenePresist() ; 
+        // }
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void OnAttack(InputValue inputValue)
@@ -150,7 +160,9 @@ Vector2 diedVector=new Vector2(10f,20f);
         spriteRenderer.color=c;
         time+=0.1f;
         yield return new WaitForSeconds(0.1f);
-        }
+
+        } 
         RestartGame();
+         
     }
 }

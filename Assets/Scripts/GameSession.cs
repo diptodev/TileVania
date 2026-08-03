@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameSession : MonoBehaviour
     int score=000;
 
     private void Awake() {
-        int currentObjects=FindObjectsByType<GameSession>().Length;
+        int currentObjects=FindObjectsByType<GameSession>(FindObjectsSortMode.None).Length;
         if (currentObjects>1)
         {
             Destroy(gameObject);
@@ -24,11 +25,7 @@ public class GameSession : MonoBehaviour
      UpdateScore();   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
     public void addScore(int score)
     {
         this.score+=score;
@@ -38,5 +35,25 @@ public class GameSession : MonoBehaviour
     {
         liveText.text=liveRemaining.ToString();
         scoreText.text=score.ToString();
+        
+        
+    }
+   public int TakeLife()
+    {
+        liveRemaining-=1;
+        UpdateScore();
+        ResetGameSession();
+        return liveRemaining;
+    }
+  public void ResetGameSession()
+    {
+       
+        if (liveRemaining==0)
+        {
+            FindAnyObjectByType<ScenePresistent>().ResetScenePresist();
+            Destroy(gameObject);
+        }
+        
     }
 }
+ 

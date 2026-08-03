@@ -13,13 +13,19 @@ public class PortalExit : MonoBehaviour
     { 
     
         int portalLayer=LayerMask.NameToLayer("Player");
-         
+         ScenePresistent scenePresistent=FindAnyObjectByType<ScenePresistent>();
         if (portalLayer==collision.gameObject.layer && !hasExited)
         {
-           
             hasExited=true;
-           int currentIndex= SceneManager.GetActiveScene().buildIndex;
-           SceneManager.LoadScene(currentIndex+1);
+            Debug.Log("Before Reset");
+            if (scenePresistent!=null)
+            {
+                scenePresistent.ResetScenePresist();
+            }
+            Debug.Log("After reset");
+            int currentIndex= SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentIndex);
+            Debug.Log("Scene loaded");
         }
     }
     // void OnCollisionEnter2D(Collision2D collision)

@@ -29,7 +29,12 @@ public class Bullets : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(collision.gameObject);
+       if (collision.gameObject.CompareTag("Enemy"))
+       {
+         
+         Destroy(collision.gameObject);
+
+       } 
         Destroy(gameObject);
     } 
 }
