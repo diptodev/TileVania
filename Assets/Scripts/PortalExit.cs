@@ -31,8 +31,15 @@ public class PortalExit : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         int currentIndex= SceneManager.GetActiveScene().buildIndex;
+        if (SceneManager.sceneCountInBuildSettings==currentIndex)
+        {
+            SceneManager.LoadScene(0);
+            Debug.Log("1st Scene loaded");
+        }else
+        {
             SceneManager.LoadScene(currentIndex+1);
             Debug.Log("Scene loaded");
+        }
     }
     // void OnCollisionEnter2D(Collision2D collision)
     // {
